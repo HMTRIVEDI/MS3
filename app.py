@@ -17,7 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 MONGO = PyMongo(app)
 @app.route("/")
-@APP.ROUTE("/get_tasks")
+@aPP.route("/get_tasks")
 def hello():
     return "Hello World ... again!"
 
