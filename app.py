@@ -3,7 +3,7 @@ import os
 from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
-from flask_pymongo import flask_PyMongo 
+from flask_pymongo import PyMongo
 from bson.objectid import objectid
 if os.path.exists("env.py"):
    import env
