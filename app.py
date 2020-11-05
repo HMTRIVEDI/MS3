@@ -20,7 +20,7 @@ MONGO = PyMongo(app)
 @app.route("/")
 @app.route("/get_tasks")
 def index()
-    return "<h1>hellp>/h1>"
+    return render_template("base.html")
 
 
 if __name__ == "__main__":
