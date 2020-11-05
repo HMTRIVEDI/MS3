@@ -23,13 +23,14 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/places)
+@app.route("/places")
 def places():
     return render_template("places.html")
 
-@app.route(/places)
-def places():
-    return render_template("places.html")
+
+@app.route("/events")
+def events():
+    return render_template("events.html")
 
 
 if __name__ == "__main__":
