@@ -10,15 +10,15 @@
 <body>
 	<!---Navbar-->
 	<nav>
-		<li> <a href="#">Home</a></li>
-		<li> <a href="#">Places</a>
-		<li> <a href="#">Events</a></li>
-		<li> <a href="#">login</a></li>
-		<li> <a href="#">Signup</a></li>
+		<li> <a href="{{ url_for('index') }}">Home</a></li>
+		<li> <a href="{{ url_for('places') }}">Places</a></li>
+		<li> <a href="{{ url_for('events') }}">Events</a></li>
+		<li> <a href="{{ url_for('login') }}">login</a></li>
+		<li> <a href="{{ url_for('signup') }}">Signup</a></li>
 	</nav>
 	<!--Navbar Ends-->
 	<!--Page content -->
-	<h1>Hi i am main contant</h1>
+	<h1>Hi i am event page</h1>
 
 	<!--page content ends-->
 

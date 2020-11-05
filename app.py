@@ -1,7 +1,7 @@
 import os
 
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -17,13 +17,22 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 MONGO = PyMongo(app)
 
+
 @app.route("/")
-@app.route("/get_tasks")
-def index()
-    return render_template("base.html")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/places)
+def places():
+    return render_template("places.html")
+
+@app.route(/places)
+def places():
+    return render_template("places.html")
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT"),
-            debug=True) 
+            debug=True)
