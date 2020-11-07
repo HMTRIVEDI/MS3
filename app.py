@@ -32,6 +32,16 @@ def events():
     return render_template("events.html")
 
 
+@app.route("/user")
+def user():
+    return render_template("useer.html")
+
+
+@app.route("/Signup")
+def Signup():
+    return render_template("Signup.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
