@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %} 
+{% block content%}
+    <h1>Places Page</h1>
+{% endblock %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Movimento</title>
-</head>
-
-<body>
-	<!---Navbar-->
-	<nav>
-		<li> <a href="{{ url_for('index') }}">Home</a></li>
-		<li> <a href="{{ url_for('places') }}">Places</a></li>
-		<li> <a href="{{ url_for('events') }}">Events</a></li>
-	</nav>
-	<!--Navbar Ends-->
-	<!--Page content -->
-	<h1>Hi i am place page</h1>
-
-	<!--page content ends-->
-
-	<!--Footer-->
-	<h2>hi i am footer</h2>
-	<!--Footer Ends-->
-
-</body>
-
-</html>
