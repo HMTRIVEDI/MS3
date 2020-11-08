@@ -26,6 +26,10 @@
 
 ---
 
+---
+
+## wireframes
+
 ## Technologies Used
 
 ---
@@ -41,7 +45,9 @@
 ## Credits
 
 ### content
+
 ### Media
+
 ### Acknowledgements
 
 ---
