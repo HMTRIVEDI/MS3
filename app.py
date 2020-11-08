@@ -34,7 +34,7 @@ def events():
 
 @app.route("/user")
 def user():
-    return render_template("useer.html")
+    return render_template("user.html")
 
 
 @app.route("/Signup")
