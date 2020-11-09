@@ -5,7 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
-   import env
+    import env
 
 
 app = Flask(__name__)
@@ -22,9 +22,9 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/places")
-def places():
-    return render_template("places.html")
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
 
 @app.route("/events")
@@ -32,14 +32,14 @@ def events():
     return render_template("events.html")
 
 
-@app.route("/user")
-def user():
-    return render_template("user.html")
+@app.route("/places")
+def places():
+    return render_template("places.html")
 
 
-@app.route("/Signup")
-def Signup():
-    return render_template("Signup.html")
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
