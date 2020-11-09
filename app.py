@@ -22,9 +22,9 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/home")
-def home():
-    return render_template("home.html")
+@app.route("/history")
+def history():
+    return render_template("history.html")
 
 
 @app.route("/events")
