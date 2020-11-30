@@ -61,7 +61,7 @@
         <div class="masthead-subheading">Welcome To Movimento a travelar guide</div>
         <div class="masthead-heading text-uppercase"></div>
         <a
-          class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+          class="btn btn-primary btn-xl text-uppercase"
           href="{{url_for('places')}}"
           >Explore</a
         >
@@ -161,7 +161,7 @@
     <footer class="footer py-4">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-4 text-lg-left">Copyright © Movimento 2020</div>
+          <div class="col-lg-4 text-lg-left">Copyright &copy; Movimento <span id="copyright"></span></div>
           <div class="col-lg-4 my-3 my-lg-0">
             <a class="btn btn-dark btn-social mx-2" href="#!"
               ><i class="fab fa-twitter"></i
@@ -190,5 +190,9 @@
     <script src="{{url_for('static',filename ='assets/mail/contact_me.js')}}"></script>
     <!-- Core theme JS-->
     <script src="{{url_for('static',filename ='js/scripts.js')}}"></script>
+    <script>$("#copyright").text(new Date().getFullYear());
+    </script>
+    
+    
   </body>
 </html>
