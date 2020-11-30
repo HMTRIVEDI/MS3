@@ -22,24 +22,14 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/history")
-def history():
-    return render_template("history.html")
-
-
-@app.route("/events")
-def events():
-    return render_template("events.html")
-
-
 @app.route("/places")
 def places():
     return render_template("places.html")
 
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
 
 
 if __name__ == "__main__":
