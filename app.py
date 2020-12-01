@@ -59,13 +59,13 @@ def signup():
 def signin():
     if request.method == "POST":
         existing_user = MONGO.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username")})
 
         if existing_user:
 
             if check_password_hash(
                     existing_user["passw"], request.form.get("passw")):
-                session["user"] = request.form.get("username").lower()
+                session["user"] = request.form.get("username")
                 flash("Hi, {}".format(
                             request.form.get("username")))
                 return redirect(url_for(
