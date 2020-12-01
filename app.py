@@ -67,7 +67,7 @@ def signin():
                     existing_user["passw"], request.form.get("passw")):
                 session["user"] = request.form.get("username")
                 flash("Hi, {}".format(
-                            request.form.get("username")))
+                    request.form.get("username")))
                 return redirect(url_for(
                     "profile", username=session["user"]))
 
@@ -91,6 +91,14 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("signup"))
 
 
 if __name__ == "__main__":

@@ -70,6 +70,13 @@
                 >Profile</a
               >
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{url_for('logout')}}"
+                >Logout</a
+              >
+            </li>
             {% else %}
             <li class="nav-item">
               <a
@@ -118,10 +125,9 @@
             need to explore .we getherinformation from our active movimento
             community and explore the new and hidden gems not explored before so
             you get the advanture of exploring something new , currently our
-            website have all that you need to explore in denark, also it provide
-            information on what are the local events going on. and by signing up
-            you can create your bucket list of places and events you want to
-            visit.
+            website have all that you need to explore and everyday we adding new hidden gem around the world so you are never out of advanture.
+
+            So don't wait signup free now, all we ask is if you know any hidden gem around world just write to us.
           </p>
         </div>
       </div>
@@ -147,7 +153,6 @@
                   required="required"
                   data-validation-required-message="Please enter your name."
                 />
-                <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <input
@@ -158,8 +163,8 @@
                   required="required"
                   data-validation-required-message="Please enter your email address."
                 />
-                <p class="help-block text-danger"></p>
               </div>
+
               <div class="form-group mb-md-0">
                 <input
                   class="form-control"
@@ -169,7 +174,6 @@
                   required="required"
                   data-validation-required-message="Please enter your phone number."
                 />
-                <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="col-md-6">
@@ -181,7 +185,6 @@
                   required="required"
                   data-validation-required-message="Please enter a message."
                 ></textarea>
-                <p class="help-block text-danger"></p>
               </div>
             </div>
           </div>
