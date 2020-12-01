@@ -8,11 +8,26 @@
       href="{{url_for('static', filename='css/styles.css') }}"
     />
     <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
     <title>Movimento</title>
   </head>
 
@@ -38,27 +53,50 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url_for('index')}}"
+                >Home</a
+              >
+            </li>
+            {% if session.user %}
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url_for('places')}}"
                 >Places to Visit</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url_for('signup')}}"
-                id="login">Signup/Login</a
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{url_for('profile', username=session['user'])}}"
+                >Profile</a
               >
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="{{url_for('signup')}}"
+                id="login"
+                >Free Signup</a
+              >
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
-
-
-{% block content%}
+    {% block content %}
     <!-- Masthead-->
-    <header class="masthead" style="background-image: url('https://wallpaperaccess.com/full/131186.jpg');">
+    <header
+      class="masthead"
+      style="
+        background-image: url('https://wallpaperaccess.com/full/131186.jpg');
+      "
+    >
       <div class="container">
-        <div class="masthead-subheading">Welcome To Movimento a travelar guide</div>
+        <div class="masthead-subheading">
+          Welcome To Movimento a travelar guide
+        </div>
         <div class="masthead-heading text-uppercase"></div>
         <a
           class="btn btn-primary btn-xl text-uppercase"
@@ -68,19 +106,25 @@
       </div>
     </header>
 
-<!--about section-->
+    <!--about section-->
     <section class="page-section bg-light" id="about">
-    <div class="container">
-    <div class="text-center">
-      <h2 class="section-heading text-uppercase">About Movimento</h2>
-    </div>
-    <div class="about-body">
-            <p class="text-muted">
-
-            Movimento is a travelers guide , we provide informartion a traveler need to explore .we getherinformation from our active movimento community and explore the new and hidden gems not explored before so you get the advanture of exploring something new , currently our website have all that you need to explore in denark, also it provide information on what are the local events going on. and by signing up you can create your bucket list of places and events you want to visit. 
-            </p>
-          </div>
-    </div>
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">About Movimento</h2>
+        </div>
+        <div class="about-body">
+          <p class="text-muted">
+            Movimento is a travelers guide , we provide informartion a traveler
+            need to explore .we getherinformation from our active movimento
+            community and explore the new and hidden gems not explored before so
+            you get the advanture of exploring something new , currently our
+            website have all that you need to explore in denark, also it provide
+            information on what are the local events going on. and by signing up
+            you can create your bucket list of places and events you want to
+            visit.
+          </p>
+        </div>
+      </div>
     </section>
     <!-- Contact-->
     <section class="page-section" id="contact">
@@ -88,7 +132,7 @@
         <div class="text-center">
           <h2 class="section-heading text-uppercase">Contact Us</h2>
           <h3 class="section-subheading text-muted">
-            Which is next place you want to see on movimento write to use , it will help othere to explore and local comunity to prosper
+            Let us know what you think.
           </h3>
         </div>
         <form id="contactForm" name="sentMessage" novalidate="novalidate">
@@ -154,14 +198,15 @@
         </form>
       </div>
     </section>
-{% endblock %}
-
+    {% endblock %}
 
     <!-- Footer-->
     <footer class="footer py-4">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-4 text-lg-left">Copyright &copy; Movimento <span id="copyright"></span></div>
+          <div class="col-lg-4 text-lg-left">
+            Copyright &copy; Movimento <span id="copyright"></span>
+          </div>
           <div class="col-lg-4 my-3 my-lg-0">
             <a class="btn btn-dark btn-social mx-2" href="#!"
               ><i class="fab fa-twitter"></i
@@ -190,10 +235,11 @@
     <script src="{{url_for('static',filename ='assets/mail/contact_me.js')}}"></script>
     <!-- Core theme JS-->
     <script src="{{url_for('static',filename ='js/scripts.js')}}"></script>
-    <script>$("#copyright").text(new Date().getFullYear());
+    <script>
+      $("#copyright").text(new Date().getFullYear());
     </script>
-    <script>$("#login").text(.get.username());
+    <script>
+      $("#login").text(.get.username());
     </script>
-    
   </body>
 </html>

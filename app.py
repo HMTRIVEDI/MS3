@@ -33,7 +33,7 @@ def places():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        
+
         existing_user = MONGO.db.users.find_one(
             {"username": request.form.get("username")})
 
@@ -49,15 +49,15 @@ def signup():
         MONGO.db.users.insert_one(register)
 
         session["user"] = request.form.get("username")
-        flash("Registration Successful!")
-        return redirect(url_for("profile",username=session["user"]))
+        flash("We are happy to have you on bord!")
+        return redirect(url_for(
+            "profile", username=session["user"]))
     return render_template("signup.html")
 
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
-        
         existing_user = MONGO.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -66,26 +66,32 @@ def signin():
             if check_password_hash(
                     existing_user["passw"], request.form.get("passw")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile",username=session["user"]))
+                flash("Hi, {}".format(
+                            request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
+
             else:
-                # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("signup"))
 
         else:
-            # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
-
-    return render_template("signin.html")
+            return redirect(url_for("signup"))
+    return render_template("profile.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    username = MONGO.db.users.find_one
-    ({"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+    # grab the session user's username from db
+    username = MONGO.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
