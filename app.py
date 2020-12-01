@@ -18,7 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 MONGO = PyMongo(app)
 
 
-# ROUTE FOR PAGES STARTS 
+# ROUTE FOR PAGES STARTS
 
 @app.route("/")
 def index():
@@ -33,24 +33,59 @@ def places():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        # check if username already exists in db
+        
         existing_user = MONGO.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username")})
 
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("signup"))
 
         register = {
-            "username": request.form.get("username").lower(),
+            "username": request.form.get("username"),
+            "name": request.form.get("name"),
             "password": generate_password_hash(request.form.get("passw"))
         }
         MONGO.db.users.insert_one(register)
 
-        # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("username")
         flash("Registration Successful!")
+        return redirect(url_for("profile",username=session["user"]))
     return render_template("signup.html")
+
+
+@app.route("/signin", methods=["GET", "POST"])
+def signin():
+    if request.method == "POST":
+        
+        existing_user = MONGO.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+
+            if check_password_hash(
+                    existing_user["passw"], request.form.get("passw")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile",username=session["user"]))
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("signin.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = MONGO.db.users.find_one
+    ({"username": session["user"]})["username"]
+    return render_template("profile.html", username=username)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

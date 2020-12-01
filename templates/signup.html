@@ -1,13 +1,18 @@
 {% extends "index.html" %} {% block content%}
 <section
   style="
-    background : url('https://www.paperstreet.com/blog/wp-content/uploads/2016/04/iStock_000080733521_Double.jpg'),no-repeat;
+    background: url('https://www.paperstreet.com/blog/wp-content/uploads/2016/04/iStock_000080733521_Double.jpg'),
+      no-repeat;
   "
 >
-  <div class="container" style="opacity: 10">
+  <div class="container">
     <!----Login form start-->
     <div>
-      <form>
+      <form
+        class="needs-validation"
+        method="GET"
+        action="{{url_for('signin')}}"
+      >
         <div class="title"><h4>Alrady Have account.</h4></div>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
@@ -35,7 +40,7 @@
             >Check me out</label
           >
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Hit Me</button>
       </form>
     </div>
 
@@ -44,28 +49,74 @@
     <!---Signup form-->
     <br />
     <div>
-      <h4>Signup for Free<small id="emailHelp" class="form-text text-muted"
-            >No worries We'll never share your information with anyone else.</small
-          ></h4>
+      <h4>
+        Signup for Free<small id="emailHelp" class="form-text text-muted"
+          >No worries We'll never share your information with anyone
+          else.</small
+        >
+      </h4>
 
-      <form class="needs-validation" method="POST" action="{{url_for('signup')}}"
-      novalidate>
+      <form
+        class="needs-validation"
+        method="POST"
+        action="{{url_for('signup')}}"
+        novalidate
+      >
         <div class="form-row">
-        <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Your Name" minlength="2" maxlength="15" required>
-          </div>
           <div class="form-group col-md-6">
-            <input type="email" class="form-control" id="inputEmail4" name="username" placeholder="Your Email" required />
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Your Name"
+              minlength="2"
+              maxlength="15"
+              name="name"
+              required
+            />
           </div>
+
           <div class="form-group col-md-6">
-            <input type="password" class="form-control" id="inputPassword4" name="passw" placeholder="Password" minlength="8" maxlength="15" required/>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              name="username"
+              placeholder="Your Email"
+              required
+            />
           </div>
+
           <div class="form-group col-md-6">
-            <input type="password" class="form-control" id="inputPassword4" name="re_passw" placeholder="Retype Password" minlength="8" maxlength="15" required/>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              name="passw"
+              placeholder="Password"
+              minlength="8"
+              maxlength="15"
+              required
+            />
           </div>
-                  <button class="btn btn-primary" type="submit">Signup</button>
+
+          <div class="form-group col-md-6">
+            <input
+              type="password"
+              class="form-control"
+              id="inputre_Password"
+              name="re_passw"
+              placeholder="Retype Password"
+              minlength="8"
+              maxlength="15"
+              required
+            />
+          </div>
+          <button class="btn btn-primary" type="submit">Signup</button>
+        </div>
       </form>
     </div>
+
     <!----Signup form End-->
   </div>
 </section>
