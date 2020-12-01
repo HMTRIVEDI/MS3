@@ -15,18 +15,18 @@
             type="email"
             class="form-control"
             id="exampleInputEmail1"
+            name="username"
+            placeholder="Your Email Please"
             aria-describedby="emailHelp"
           />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
           <input
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            placeholder="Your Password please"
+            name="passw"
           />
         </div>
         <div class="form-group form-check">
@@ -44,77 +44,26 @@
     <!---Signup form-->
     <br />
     <div>
-      <h4>Signup for Free</h4>
+      <h4>Signup for Free<small id="emailHelp" class="form-text text-muted"
+            >No worries We'll never share your information with anyone else.</small
+          ></h4>
 
       <form class="needs-validation" method="POST" action="{{url_for('signup')}}"
       novalidate>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" name="inputEmail4" />
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Your Name" minlength="2" maxlength="15" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" name="inputPassword4" />
+            <input type="email" class="form-control" id="inputEmail4" name="username" placeholder="Your Email" required />
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="validationTooltip01">First name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip01"
-              value="Mark"
-              required
-              name="validationTooltip01"
-            />
-            <div class="valid-tooltip">Looks good!</div>
+          <div class="form-group col-md-6">
+            <input type="password" class="form-control" id="inputPassword4" name="passw" placeholder="Password" minlength="8" maxlength="15" required/>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="validationTooltip02">Last name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip02"
-              name="validationTooltip02"
-              value="Otto"
-              required
-            />
-            <div class="valid-tooltip">Looks good!</div>
+          <div class="form-group col-md-6">
+            <input type="password" class="form-control" id="inputPassword4" name="re_passw" placeholder="Retype Password" minlength="8" maxlength="15" required/>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationTooltip03">City</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip03"
-              name="validationTooltip03"
-              required
-            />
-            <div class="invalid-tooltip">Please provide a valid city.</div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationTooltip04">State</label>
-            <select class="custom-select" id="validationTooltip04" name="validationTooltip04" required>
-              <option selected disabled value="">Choose...</option>
-              <option>...</option>
-            </select>
-            <div class="invalid-tooltip">Please select a valid state.</div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationTooltip05">Zip</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip05"
-              name="validationTooltip05"
-              required
-            />
-            <div class="invalid-tooltip">Please provide a valid zip.</div>
-          </div>
-        </div>
-        <button class="btn btn-primary" type="submit">Signup</button>
+                  <button class="btn btn-primary" type="submit">Signup</button>
       </form>
     </div>
     <!----Signup form End-->
