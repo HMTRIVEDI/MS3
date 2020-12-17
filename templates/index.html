@@ -37,8 +37,8 @@
                         <a class="nav-link js-scroll-trigger" href="{{url_for('places')}}">Places to Visit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger"
-                            href="{{url_for('profile', username=session['user'])}}"> {{ username }} </a>
+                        <a class="nav-link js-scroll-trigger" href="{{url_for('profile', username=session['user'])}}">
+                            {{ username }} </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('logout')}}">Logout</a>
@@ -74,8 +74,28 @@
             <div class="masthead-subheading">
                 Welcome To Movimento a travelar guide
             </div>
-            <div class="masthead-heading text-uppercase"></div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="{{url_for('places')}}">Explore</a>
+            <!----Login form start-->
+            <div>
+                <form class="needs-validation text-uppercase" method="POST" action="{{url_for('signin')}}">
+                    <div class="title">
+                        <h4>Alrady Have account.</h4>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="username" name="username"
+                            placeholder="Your Email Please" aria-describedby="emailHelp" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="passw" placeholder="Your Password please"
+                            name="passw" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Hit Me</button>
+                    <div class="form-group text-center fs-3 ">
+                        <p>New Here <a class="fw-bolder" href="{{url_for('signup')}}">Signup for free</a></p>
+                    </div>
+                </form>
+            </div>
+            <!----Login form End-->
+
         </div>
     </header>
 
