@@ -1,12 +1,8 @@
 {% extends "index.html" %} {% block content%}
-<section style="
-    background: url('https://www.paperstreet.com/blog/wp-content/uploads/2016/04/iStock_000080733521_Double.jpg'),
-      no-repeat;
-  ">
+<section class="page-section bg-dark">
     <div class="container">
         <!---Signup form-->
-        <br />
-        <div>
+        <div class="row align-items-stretch mb-5">
             <h4>
                 Signup for Free<small id="emailHelp" class="form-text text-muted">No worries We'll never share your
                     information with anyone
@@ -14,10 +10,19 @@
             </h4>
 
             <form class="needs-validation" method="POST" action="{{url_for('signup')}}" novalidate>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert alert-info" role="alert">
+                        <h4 class=" center-align">{{ message }}</h4>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="name" placeholder="Your Name" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required/>
                     </div>
 
                     <div class="form-group col-md-6">
@@ -27,7 +32,8 @@
 
                     <div class="form-group col-md-6">
                         <input type="password" class="form-control" id="inputPassword" name="passw"
-                            placeholder="Password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
+                            placeholder="Password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                            required />
                     </div>
 
                     <div class="form-group col-md-6">

@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -38,7 +39,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('profile', username=session['user'])}}">
-                            {{ username }} </a>
+                            {{ name }} </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('logout')}}">Logout</a>
@@ -52,25 +53,21 @@
             </div>
         </div>
     </nav>
-
-    <header>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert alert-info" role="alert">
-            <h4 class=" center-align">{{ message }}</h4>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </header>
-
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="mx-auto alert alert alert-info" role="alert">
+        <h4 class=" center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     {% block content %}
     <!-- Masthead-->
     <header class="masthead" style="
         background-image: url('https://wallpaperaccess.com/full/131186.jpg');
       ">
-        <div class="container">
+        <div class="container-sm">
             <div class="masthead-subheading">
                 Welcome To Movimento a travelar guide
             </div>
@@ -80,13 +77,15 @@
                     <div class="title">
                         <h4>Alrady Have account.</h4>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="username" name="username"
-                            placeholder="Your Email Please" aria-describedby="emailHelp" />
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="passw" placeholder="Your Password please"
-                            name="passw" />
+                    <div class="formbody">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="username" name="username"
+                                placeholder="Your Email Please" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="passw" placeholder="Your Password please"
+                                name="passw" required />
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Hit Me</button>
                     <div class="form-group text-center fs-3 ">

@@ -59,7 +59,7 @@ def signup():
 def signin():
     if request.method == "POST":
         existing_user = MONGO.db.users.find_one(
-            {"username": request.form.get("username")})
+            {"username": request.form.get("username"),})
 
         if existing_user:
 
@@ -72,10 +72,10 @@ def signin():
                     "profile", username=session["user"]))
 
             else:
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("signup"))
+                flash("Incorrect Username or Password")
+                return redirect(url_for("index"))
         else:
-            flash("Incorrect Username and/or Password")
+            flash("No user found signup please")
             return redirect(url_for("signup"))
     return render_template("profile.html")
 
@@ -97,7 +97,7 @@ def logout():
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("signup"))
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
