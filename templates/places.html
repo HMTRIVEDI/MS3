@@ -1,76 +1,112 @@
 {% extends "index.html" %} {% block content%}
 <section style="background-image: url('https://wallpaperaccess.com/full/131186.jpg');">
-    
-  <div class="container">
-    <div class="card-columns">
+    <div class="container">
+        <div class="card-columns">
+            <!----Card Start-->
+            <div class="card">
+                <img src="https://guidetoiceland.imgix.net/398854/x/0/the-dc-plane-wreck-is-a-famous-site-located-within-the-black-sand-desert-of-solheimasandur-south-iceland-the-wreckage-is-a-particularly-beloved-spot-by-local-and-visiting-photographers-alike-thanks-to-its-sparse-and-wild-surrounding-landscape-and-its-incredible-visual-contrast-to-the-aircrafts-gnarled-metal"
+                    class="card-img-top" alt="..." />
+
+                <div class="card-body">
+                    <h5 class="card-title">1973 US Navy C-117D Sólheimasandur Crash</h5>
+                    <p class="card-text">
+                        Located In iceland
+                    </p>
+                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
+                </div>
+            </div>
+            <!----Card End-->
 
 
-    <!----Card Start-->
-      <div class="card">
-        <img
-          src="https://guidetoiceland.imgix.net/398854/x/0/the-dc-plane-wreck-is-a-famous-site-located-within-the-black-sand-desert-of-solheimasandur-south-iceland-the-wreckage-is-a-particularly-beloved-spot-by-local-and-visiting-photographers-alike-thanks-to-its-sparse-and-wild-surrounding-landscape-and-its-incredible-visual-contrast-to-the-aircrafts-gnarled-metal"
-          class="card-img-top"
-          alt="..."/>
 
-        <div class="card-body">
-          <h5 class="card-title">1973 US Navy C-117D Sólheimasandur Crash</h5>
-          <p class="card-text">
-            Located In iceland
-          </p>
-          <a
-          class="btn btn-info btn-sm text-uppercase"
-          href=""
-          >Info</a>
+
+            <!----Card Start-->
+            <div class="card">
+                <img src="https://cdn.tourismontheedge.com/wp-content/uploads/2010/11/Man_Pupu_nyor_36-russia.jpg"
+                    alt="..." class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">The Seven Giants of the Urals: Man-Pupu-Nyor, Russia</h5>
+                    <p class="card-text">
+                        Located In Russia
+                    </p>
+                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
+                </div>
+            </div>
+            <!----Card End-->
+
+            <!----Card Start-->
+            <div class="card">
+                <img src="https://i.imgur.com/KpJ7Qc4.jpg" alt="..." class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">The Six Forgotten Giants</h5>
+                    <p class="card-text">
+                        Located In Denmark
+                    </p>
+                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
+                </div>
+            </div>
+            <!----Card End-->
+
+
         </div>
-      </div>
-     <!----Card End-->
-
-
-
-    
-    <!----Card Start-->
-      <div class="card">
-        <img
-          src="https://cdn.tourismontheedge.com/wp-content/uploads/2010/11/Man_Pupu_nyor_36-russia.jpg"
-          alt="..."
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h5 class="card-title">The Seven Giants of the Urals: Man-Pupu-Nyor, Russia</h5>
-          <p class="card-text">
-            Located In Russia
-          </p>
-          <a
-          class="btn btn-info btn-sm text-uppercase"
-          href=""
-          >Info</a>
-        </div>
-      </div>
-     <!----Card End-->
-
-     <!----Card Start-->
-      <div class="card">
-        <img
-          src="https://i.imgur.com/KpJ7Qc4.jpg"
-          alt="..."
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h5 class="card-title">The Six Forgotten Giants</h5>
-          <p class="card-text">
-            Located In Denmark
-          </p>
-          <a
-          class="btn btn-info btn-sm text-uppercase"
-          href=""
-          >Info</a>
-        </div>
-      </div>
-     <!----Card End-->
-
-
     </div>
-  </div>
 </section>
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Would You Like to contribute for Information</h2>
+            <h3 class="section-subheading text-muted">
+                Here You can give information about any hidden Gem you know. Just fillout information below help
+                everyone to find hidden gem around the world
+            </h3>
+        </div>
+        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" id="email" type="email" placeholder="Your Email *"
+                            required="required" data-validation-required-message="Please enter your email address." />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="place_name" type="text"
+                            placeholder="Please enter Name of the Place *" required="required"
+                            data-validation-required-message="Please enter Name of the Place" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="email" type="email"
+                            placeholder="Please enter where it's located" required="required"
+                            data-validation-required-message="Please enter Which country it's located" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="place_like" type="text"
+                            placeholder="Things You like about the place *" required="required"
+                            data-validation-required-message="Things You like about the place" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="place_dislike" type="text"
+                            placeholder="Things You dislike about the place" required="required"
+                            data-validation-required-message="Things You dislike about the place" />
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group form-group-textarea">
+                        <textarea class="form-control" id="message" placeholder=" Here You can discribe your overall feel about loaction" required="required"
+                            data-validation-required-message=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div id="success"></div>
+                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
 
 {% endblock %}
