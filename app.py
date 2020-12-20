@@ -59,7 +59,7 @@ def signup():
 def signin():
     if request.method == "POST":
         existing_user = MONGO.db.users.find_one(
-            {"username": request.form.get("username"),})
+            {"username": request.form.get("username"), })
 
         if existing_user:
 
