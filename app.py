@@ -44,6 +44,12 @@ def signup():
         register = {
             "username": request.form.get("username"),
             "name": request.form.get("name"),
+            "street": request.form.get("street"),
+            "houseno": request.form.get("houseno"),
+            "city": request.form.get("city"),
+            "zip": request.form.get("zip"),
+            "country": request.form.get("country"),
+            "phone": request.form.get("phone"),
             "password": generate_password_hash(request.form.get("passw"))
         }
         MONGO.db.users.insert_one(register)

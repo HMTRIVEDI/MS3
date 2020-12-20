@@ -30,21 +30,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{url_for('index')}}">Home</a>
-                    </li>
                     {% if session.user %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('places')}}">Places to Visit</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('profile', username=session['user'])}}">
-                            {{ name }} </a>
+                            Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('logout')}}">Logout</a>
                     </li>
                     {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{url_for('index')}}">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('signup')}}" id="login">Free Signup</a>
                     </li>
@@ -53,16 +53,12 @@
             </div>
         </div>
     </nav>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="mx-auto alert alert alert-info" role="alert">
-        <h4 class=" center-align">{{ message }}</h4>
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+
+
     {% block content %}
+
+
+
     <!-- Masthead-->
     <header class="masthead" style="
         background-image: url('https://wallpaperaccess.com/full/131186.jpg');
@@ -77,6 +73,15 @@
                     <div class="title">
                         <h4>Alrady Have account.</h4>
                     </div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="mx-auto alert alert alert-info" role="alert">
+                        <h4 class=" center-align">{{ message }}</h4>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                     <div class="formbody">
                         <div class="form-group">
                             <input type="email" class="form-control" id="username" name="username"
@@ -163,6 +168,9 @@
             </form>
         </div>
     </section>
+
+
+
     {% endblock %}
 
     <!-- Footer-->
