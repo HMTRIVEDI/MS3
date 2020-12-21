@@ -106,6 +106,28 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route("/newplace", methods=["GET", "POST"])
+def newplace():
+    if request.method == "POST":
+
+        existing_place = MONGO.db.place.find_one(
+            {"place_name": request.form.get("place_name")})
+
+        if existing_place:
+            flash("Place already exists")
+            return redirect(url_for("place"))
+
+        new_place = {
+            "place_name": request.form.get("place_name"),
+            "place_location": request.form.get("place_location"),
+            "place_image": request.form.get("place_image"),
+            "explorer": request.form.get("explorer"),
+        }
+        MONGO.db.users.insert_one(new_place)
+
+    return render_template("place.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

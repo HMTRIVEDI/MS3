@@ -3,6 +3,7 @@
     <div class="container">
         <div class="card-columns">
             <!----Card Start-->
+            {% for place in places %}
             <div class="card">
                 <img src="https://guidetoiceland.imgix.net/398854/x/0/the-dc-plane-wreck-is-a-famous-site-located-within-the-black-sand-desert-of-solheimasandur-south-iceland-the-wreckage-is-a-particularly-beloved-spot-by-local-and-visiting-photographers-alike-thanks-to-its-sparse-and-wild-surrounding-landscape-and-its-incredible-visual-contrast-to-the-aircrafts-gnarled-metal"
                     class="card-img-top" alt="..." />
@@ -12,15 +13,16 @@
                     <p class="card-text">
                         Located In iceland
                     </p>
-                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
+                    <a class="btn btn-info btn-sm text-uppercase desabled " href="">Info</a>
                 </div>
             </div>
+            {% endfor %}
             <!----Card End-->
 
 
 
 
-            <!----Card Start-->
+            <!----Card Start--
             <div class="card">
                 <img src="https://cdn.tourismontheedge.com/wp-content/uploads/2010/11/Man_Pupu_nyor_36-russia.jpg"
                     alt="..." class="card-img-top" />
@@ -32,9 +34,9 @@
                     <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
                 </div>
             </div>
-            <!----Card End-->
+            !----Card End-->
 
-            <!----Card Start-->
+            <!----Card Start--
             <div class="card">
                 <img src="https://i.imgur.com/KpJ7Qc4.jpg" alt="..." class="card-img-top" />
                 <div class="card-body">
@@ -45,7 +47,7 @@
                     <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
                 </div>
             </div>
-            <!----Card End-->
+            !----Card End-->
 
 
         </div>
@@ -57,50 +59,75 @@
             <h2 class="section-heading text-uppercase">Would You Like to contribute for Information</h2>
             <h3 class="section-subheading text-muted">
                 Here You can give information about any hidden Gem you know. Just fillout information below help
-                everyone to find hidden gem around the world
+                everyone to find hidden gem around the world. and if you are the first persone to find it and update details on our website your name will shown on location card as explorer.
             </h3>
         </div>
-        <form id="contactForm" name="sentMessage" novalidate="novalidate">
-            <div class="row align-items-stretch mb-5">
+        <form id="contactForm" method="POST" action="{{url_for('newplace')}}" validate>
+            <div class="row align-items-stretch mb-5">                          
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *"
-                            required="required" data-validation-required-message="Please enter your email address." />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="place_name" type="text"
-                            placeholder="Please enter Name of the Place *" required="required"
-                            data-validation-required-message="Please enter Name of the Place" />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="email" type="email"
-                            placeholder="Please enter where it's located" required="required"
-                            data-validation-required-message="Please enter Which country it's located" />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="place_like" type="text"
-                            placeholder="Things You like about the place *" required="required"
-                            data-validation-required-message="Things You like about the place" />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="place_dislike" type="text"
-                            placeholder="Things You dislike about the place" required="required"
-                            data-validation-required-message="Things You dislike about the place" />
-                    </div>
+                       
+                        <input 
+                        class="form-control" 
+                        id="email" 
+                        type="email"
+                        name="explorer"
+                        placeholder="Your Email *"
+                        required="required" data-validation-required-message="Please enter you email address." />
 
+                    </div>
+                    <div class="form-group">
+                        
+                        <input 
+                        class="form-control" 
+                        id="place_name" 
+                        name="place_name"
+                        type="text"
+                        placeholder="Please enter Name of the Place *" required="required"
+                        data-validation-required-message="Please enter Name of the Place" />
+
+                    </div>
+                    <div class="form-group">
+                        
+                        <input 
+                        class="form-control" 
+                        id="place_location"
+                        name="place_location"
+                        type="text"
+                        placeholder="Please enter where it's located" required="required"
+                        data-validation-required-message="Please enter Which country it's located" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input 
+                        class="form-control" 
+                        id="place_image" 
+                        name="place_image"
+                        type="file"
+                        placeholder="would you like to uplode location image"
+                        />
+
+                    </div>
                 </div>
                 <div class="col-md-6">
 
                     <div class="form-group form-group-textarea">
-                        <textarea class="form-control" id="message" placeholder=" Here You can discribe your overall feel about loaction" required="required"
-                            data-validation-required-message=""></textarea>
+                        
+                        <textarea 
+                        class="form-control" 
+                        id="place_details"
+                        name="place_details" 
+                        placeholder=" Here You can discribe more details about loaction which can help otheres to explore it."
+                        required="required"
+                        data-validation-required-message=""></textarea>
                     </div>
                 </div>
             </div>
             <div class="text-center">
                 <div id="success"></div>
-                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">
-                    Send Message
+                <button class="btn btn-primary btn-xl text-uppercase" type="submit">
+                    submit
                 </button>
             </div>
         </form>
