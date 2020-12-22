@@ -4,9 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from bson.objectid import ObjectId
-if os.path.exists("env.py"):
-    import env
+# if os.path.exists("env.py"):
+#    import env
 
 
 app = Flask(__name__)
@@ -90,11 +89,13 @@ def signin():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
-    username = MONGO.db.users.find_one(
-        {"username": session["user"]})["username"]
+    username = MONGO.db.users.find_one({
+        "username": session["user"]})["username"]
+    name = MONGO.db.users.find_one({
+        "name": session["user"]})["name"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, name=name)
 
     return redirect(url_for("login"))
 
