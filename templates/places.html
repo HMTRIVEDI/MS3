@@ -15,7 +15,31 @@
                     <p class="card-text" href="">First Explorer in Movimento Community: <strong
                             class="card-text text-uppercase">{{ place.explorer }}</strong>
                     </p>
-                    <a class="btn btn-info btn-sm text-uppercase desabled " href="">{{ place.place_details }}</a>
+                    <!--Information Box -->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Info
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Location Details</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ place.place_details }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}

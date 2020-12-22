@@ -120,6 +120,7 @@ def newplace():
 
         new_place = {
             "place_name": request.form.get("place_name").lower(),
+            "place_details": request.form.get("place_details").lower(),
             "place_location": request.form.get("place_location").lower(),
             "explorer": request.form.get("explorer").lower(),
             "place_image": request.form.get("place_image")
