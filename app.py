@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from gridfs import GridFS
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
@@ -111,19 +112,24 @@ def newplace():
     if request.method == "POST":
 
         existing_place = MONGO.db.place.find_one(
-            {"place_name": request.form.get("place_name")})
+           {"place_name": request.form.get("place_name")})
 
         if existing_place:
-            flash("Place already exists")
-            return redirect(url_for("place"))
+           flash("Place already exists")
+           return redirect(url_for("place"))
+
+        if "place_image" in request.file:
+           place_image = request.file("place_image")
+           MONGO.save_file
+           (place_image.filename, place_image, base='fs', content_type=None)
 
         new_place = {
             "place_name": request.form.get("place_name"),
             "place_location": request.form.get("place_location"),
-            "place_image": request.form.get("place_image"),
-            "explorer": request.form.get("explorer"),
+            "place_image":request.file.get("place_image"),
+            "explorer": request.form.get("explorer")
         }
-        MONGO.db.users.insert_one(new_place)
+        MONGO.db.place.insert_one(new_place)
 
     return render_template("place.html")
 
