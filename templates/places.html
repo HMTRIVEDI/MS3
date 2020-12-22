@@ -5,122 +5,81 @@
             <!----Card Start-->
             {% for place in places %}
             <div class="card">
-                <img src="https://guidetoiceland.imgix.net/398854/x/0/the-dc-plane-wreck-is-a-famous-site-located-within-the-black-sand-desert-of-solheimasandur-south-iceland-the-wreckage-is-a-particularly-beloved-spot-by-local-and-visiting-photographers-alike-thanks-to-its-sparse-and-wild-surrounding-landscape-and-its-incredible-visual-contrast-to-the-aircrafts-gnarled-metal"
-                    class="card-img-top" alt="..." />
+                <img src="{{ place.place_image}}" class="card-img-top" alt="..." />
 
                 <div class="card-body">
-                    <h5 class="card-title">1973 US Navy C-117D Sólheimasandur Crash</h5>
-                    <p class="card-text">
-                        Located In iceland
+                    <h5 class="card-title text-uppercase text-dark">{{ place.place_name }}</h5>
+                    <p class="card-text text-uppercase">
+                        {{ place.place_location }}
                     </p>
-                    <a class="btn btn-info btn-sm text-uppercase desabled " href="">Info</a>
+                    <p class="card-text" href="">First Explorer in Movimento Community: <strong
+                            class="card-text text-uppercase">{{ place.explorer }}</strong>
+                    </p>
+                    <a class="btn btn-info btn-sm text-uppercase desabled " href="">{{ place.place_details }}</a>
                 </div>
             </div>
             {% endfor %}
             <!----Card End-->
-
-
-
-
-            <!----Card Start--
-            <div class="card">
-                <img src="https://cdn.tourismontheedge.com/wp-content/uploads/2010/11/Man_Pupu_nyor_36-russia.jpg"
-                    alt="..." class="card-img-top" />
-                <div class="card-body">
-                    <h5 class="card-title">The Seven Giants of the Urals: Man-Pupu-Nyor, Russia</h5>
-                    <p class="card-text">
-                        Located In Russia
-                    </p>
-                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
-                </div>
-            </div>
-            !----Card End-->
-
-            <!----Card Start--
-            <div class="card">
-                <img src="https://i.imgur.com/KpJ7Qc4.jpg" alt="..." class="card-img-top" />
-                <div class="card-body">
-                    <h5 class="card-title">The Six Forgotten Giants</h5>
-                    <p class="card-text">
-                        Located In Denmark
-                    </p>
-                    <a class="btn btn-info btn-sm text-uppercase" href="">Info</a>
-                </div>
-            </div>
-            !----Card End-->
-
-
         </div>
     </div>
 </section>
+
 <section class="page-section" id="contact">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Would You Like to contribute for Information</h2>
             <h3 class="section-subheading text-muted">
                 Here You can give information about any hidden Gem you know. Just fillout information below help
-                everyone to find hidden gem around the world. and if you are the first persone to find it and update details on our website your name will shown on location card as explorer.
+                everyone to find hidden gem around the world. and if you are the first persone to find it and update
+                details on our website your name will shown on location card as explorer.
             </h3>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="mx-auto alert alert alert-info" role="alert">
+                <h4 class=" center-align">{{ message }}</h4>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
         <form id="contactForm" method="POST" enctype="multipart/form-data" action="{{url_for('newplace')}}" validate>
-            <div class="row align-items-stretch mb-5">                          
+            <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                       
-                        <input 
-                        class="form-control" 
-                        id="email" 
-                        type="email"
-                        name="explorer"
-                        placeholder="Your Email *"
-                        required="required" data-validation-required-message="Please enter you email address." />
 
-                    </div>
-                    <div class="form-group">
-                        
-                        <input 
-                        class="form-control" 
-                        id="place_name" 
-                        name="place_name"
-                        type="text"
-                        placeholder="Please enter Name of the Place *" required="required"
-                        data-validation-required-message="Please enter Name of the Place" />
-
-                    </div>
-                    <div class="form-group">
-                        
-                        <input 
-                        class="form-control" 
-                        id="place_location"
-                        name="place_location"
-                        type="text"
-                        placeholder="Please enter where it's located" required="required"
-                        data-validation-required-message="Please enter Which country it's located" />
+                        <input class="form-control" id="email" type="text" name="explorer" placeholder="Your Name *"
+                            required="required" data-validation-required-message="Please enter you Name" />
 
                     </div>
                     <div class="form-group">
 
-                        <input 
-                        class="form-control" 
-                        id="place_image" 
-                        name="place_image"
-                        type="file"
-                        placeholder="would you like to uplode location image"
-                        />
+                        <input class="form-control" id="place_name" name="place_name" type="text"
+                            placeholder="Please enter Name of the Place *" required="required"
+                            data-validation-required-message="Please enter Name of the Place" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input class="form-control" id="place_location" name="place_location" type="text"
+                            placeholder="Please enter where it's located" required="required"
+                            data-validation-required-message="Please enter Which country it's located" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input class="form-control" id="place_image" name="place_image" type="url"
+                            placeholder="please put the image link for location" />
 
                     </div>
                 </div>
                 <div class="col-md-6">
 
                     <div class="form-group form-group-textarea">
-                        
-                        <textarea 
-                        class="form-control" 
-                        id="place_details"
-                        name="place_details" 
-                        placeholder=" Here You can discribe more details about loaction which can help otheres to explore it."
-                        required="required"
-                        data-validation-required-message=""></textarea>
+
+                        <textarea class="form-control" id="place_details" name="place_details"
+                            placeholder=" Here You can discribe more details about loaction which can help otheres to explore it."
+                            required="required" data-validation-required-message=""></textarea>
                     </div>
                 </div>
             </div>
