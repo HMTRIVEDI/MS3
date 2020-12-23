@@ -54,7 +54,7 @@ def signup():
         }
         MONGO.db.users.insert_one(register)
 
-        session["user"] = request.form.get("username", "name")
+        session["user"] = request.form.get("username")
 
         flash("We are happy to have you on bord!")
         return redirect(url_for(
@@ -72,7 +72,7 @@ def signin():
 
             if check_password_hash(
                existing_user["password"], request.form.get("passw")):
-                session["user"] = request.form.get("username").lower()
+                session["user"] = request.form.get("username")
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
