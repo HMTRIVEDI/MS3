@@ -4,8 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-# if os.path.exists("env.py"):
-#    import env
+if os.path.exists("env.py"):
+    import env
 
 
 app = Flask(__name__)
@@ -54,7 +54,8 @@ def signup():
         }
         MONGO.db.users.insert_one(register)
 
-        session["user"] = request.form.get("username")
+        session["user"] = list(request.form.get("username", "name", "phone"))
+
         flash("We are happy to have you on bord!")
         return redirect(url_for(
             "profile", username=session["user"]))
@@ -91,11 +92,9 @@ def profile(username):
     # grab the session user's username from db
     username = MONGO.db.users.find_one({
         "username": session["user"]})["username"]
-    name = MONGO.db.users.find_one({
-        "name": session["user"]})["name"]
 
     if session["user"]:
-        return render_template("profile.html", username=username, name=name)
+        return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
 
@@ -121,7 +120,6 @@ def newplace():
 
         new_place = {
             "place_name": request.form.get("place_name").lower(),
-            "place_details": request.form.get("place_details").lower(),
             "place_location": request.form.get("place_location").lower(),
             "explorer": request.form.get("explorer").lower(),
             "place_image": request.form.get("place_image")

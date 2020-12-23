@@ -1,4 +1,6 @@
-{% extends "index.html" %} {% block content%}
+{% extends "index.html" %} 
+
+{% block content%}
 <section style="background-image: url('https://wallpaperaccess.com/full/131186.jpg');">
     <div class="container">
         <div class="card-columns">
@@ -15,31 +17,6 @@
                     <p class="card-text" href="">First Explorer in Movimento Community: <strong
                             class="card-text text-uppercase">{{ place.explorer }}</strong>
                     </p>
-                    <!--Information Box -->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                        Info
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Location Details</h5>
-                                </div>
-                                <div class="modal-body">
-                                    <p>{{ place.place_details }}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -69,7 +46,7 @@
         </div>
         <form id="contactForm" method="POST" enctype="multipart/form-data" action="{{url_for('newplace')}}" validate>
             <div class="row align-items-stretch mb-5">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
 
                         <input class="form-control" id="email" type="text" name="explorer" placeholder="Your Name *"
@@ -97,15 +74,6 @@
 
                     </div>
                 </div>
-                <div class="col-md-6">
-
-                    <div class="form-group form-group-textarea">
-
-                        <textarea class="form-control" id="place_details" name="place_details"
-                            placeholder=" Here You can discribe more details about loaction which can help otheres to explore it."
-                            required="required" data-validation-required-message=""></textarea>
-                    </div>
-                </div>
             </div>
             <div class="text-center">
                 <div id="success"></div>
@@ -116,7 +84,4 @@
         </form>
     </div>
 </section>
-
-
-
 {% endblock %}
