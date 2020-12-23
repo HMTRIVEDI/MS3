@@ -54,7 +54,7 @@ def signup():
         }
         MONGO.db.users.insert_one(register)
 
-        session["user"] = list(request.form.get("username", "name", "phone"))
+        session["user"] = request.form.get("username", "name")
 
         flash("We are happy to have you on bord!")
         return redirect(url_for(
