@@ -24,18 +24,22 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="GET">
                             <h6 class="heading-small text-muted mb-4">User information</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <p>Userid: {{ username }}</p>
+                                            <p>UserID</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p><strong>{{ username.username }}</strong></p>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-username">Password</label>
+                                            <label class="form-control-label"
+                                                for="input-username">{{ username.passw }}</label>
                                             <input type="password" class="form-control" id="inputPassword" name="passw"
                                                 placeholder="Password" minlength="5" maxlength="15"
                                                 pattern="^[a-zA-Z0-9]{5,15}$" required />
@@ -44,19 +48,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            {{ name }}
-                                            <label class="form-control-label" for="input-first-name"></label>
-                                            <input type=" text" class="form-control" name="name" id="name"
-                                                aria-valuetext="name " placeholder=" Your Name" minlength="5"
-                                                maxlength="15" required />
+                                        <div class="form-group">
+                                            <p>Username</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p><strong>{{ username.name }}</strong></p>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-last-name">Phone</label>
                                             <input type="number" class="form-control" name="phone" id="inputphone"
-                                                placeholder="phone number" />
+                                                placeholder="{{ username.phone}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +72,7 @@
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-address">Address</label>
                                             <input type="text" class="form-control" id="inputAddress"
-                                                placeholder="Street,house/apartment" name="street">
+                                                placeholder="{{username.street}}" name="street">
                                         </div>
                                     </div>
                                 </div>
@@ -78,23 +81,23 @@
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-city">City</label>
                                             <input type="text" class="form-control" id="inputCity" name="city"
-                                                placeholder="City">
+                                                placeholder="{{ username.city }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-country">Country</label>
                                             <input type="text" id="input-country"
-                                                class="form-control form-control-alternative" placeholder="Country"
-                                                name="country">
+                                                class="form-control form-control-alternative"
+                                                placeholder="{{ username.country }}" name="country">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">Postal code</label>
                                             <input type="number" id="input-postal-code"
-                                                class="form-control form-control-alternative" placeholder="Postal code"
-                                                name="zip">
+                                                class="form-control form-control-alternative"
+                                                placeholder="{{ username.zip }}" name="zip">
                                         </div>
                                     </div>
                                 </div>

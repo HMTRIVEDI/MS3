@@ -91,7 +91,7 @@ def signin():
 def profile(username):
     # grab the session user's username from db
     username = MONGO.db.users.find_one({
-        "username": session["user"]})["username"]
+        "username": session["user"]})
 
     if session["user"]:
         return render_template("profile.html", username=username)
@@ -121,7 +121,6 @@ def newplace():
         new_place = {
             "place_name": request.form.get("place_name").lower(),
             "place_location": request.form.get("place_location").lower(),
-            "explorer": request.form.get("explorer").lower(),
             "place_image": request.form.get("place_image")
         }
         MONGO.db.place.insert_one(new_place)
