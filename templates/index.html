@@ -82,9 +82,52 @@
             </div>
             <!----Login form End-->
             {% endif %}
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header">
+                            <h5 class="modal-title ">Alrady Have account.</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form class="needs-validation text-uppercase card-body" method="POST"
+                                action="{{url_for('signin')}}">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert alert-info" role="alert">
+                                    <h4 class=" center-align">{{ message }}</h4>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                                <div class="formbody">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="username" name="username"
+                                            placeholder="Your Email Please" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="passw"
+                                            placeholder="Your Password please" name="passw" required />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary fw-bolder">Login</button>
+                                <div class="form-group text-center fs-3 ">
+                                    <p claas="card-text">New Here <a class="fw-bolder"
+                                            href="{{url_for('signup')}}">Signup for
+                                            free</a></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
-
     <!--about section-->
     <section class="page-section bg-light" id="about">
         <div class="container">
@@ -153,47 +196,7 @@
 
 
     {% endblock %}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Alrady Have account.</h5>
-                </div>
-                <div class="modal-body">
-                    <form class="needs-validation text-uppercase card-body" method="POST"
-                        action="{{url_for('signin')}}">
-                        {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                        {% for message in messages %}
-                        <div class="alert alert alert-info" role="alert">
-                            <h4 class=" center-align">{{ message }}</h4>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                        {% endwith %}
-                        <div class="formbody">
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="username" name="username"
-                                    placeholder="Your Email Please" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="passw"
-                                    placeholder="Your Password please" name="passw" required />
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary fw-bolder">Login</button>
-                        <div class="form-group text-center fs-3 ">
-                            <p claas="card-text">New Here <a class="fw-bolder" href="{{url_for('signup')}}">Signup for
-                                    free</a></p>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
