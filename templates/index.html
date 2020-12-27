@@ -20,8 +20,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="#"
-                    alt="" /></a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="#" alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,6 +29,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{url_for('index')}}">Home</a>
+                    </li>
                     {% if session.user %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('places')}}">Explore</a>
@@ -42,9 +44,6 @@
                         <a class="nav-link js-scroll-trigger" href="{{url_for('logout')}}">Logout</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{url_for('index')}}">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{url_for('signup')}}" id="login">Free Signup</a>
                     </li>
@@ -64,42 +63,48 @@
         background-image: url('https://wallpaperaccess.com/full/131186.jpg');
       ">
         <div class="container-sm">
-            <div class="masthead-subheading">
-                Welcome To Movimento a travelar guide
+            {% if session.user %}
+            <div class="row">
+                <div class="col-md-6 offset-3 masthead-subheading">
+                    <strong>Welcome To Movimento a Explorer's guide</strong>
+                </div>
             </div>
+            {% else %}
             <!----Login form start-->
-            <div>
-                <form class="needs-validation text-uppercase" method="POST" action="{{url_for('signin')}}">
-                    <div class="title">
-                        <h4>Alrady Have account.</h4>
-                    </div>
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="mx-auto alert alert alert-info" role="alert">
-                        <h4 class=" center-align">{{ message }}</h4>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                    <div class="formbody">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="username" name="username"
-                                placeholder="Your Email Please" required />
+            <div class="row">
+                <div class="col-md-6 offset-3 login card p-1 bg-dark" style="width: 20rem;opacity: 0.5;">
+                    <form class="needs-validation text-uppercase" method="POST" action="{{url_for('signin')}}">
+                        <div class="card-title">
+                            <h4>Alrady Have account.</h4>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="passw" placeholder="Your Password please"
-                                name="passw" required />
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="mx-auto alert alert alert-info" role="alert">
+                            <h4 class=" center-align">{{ message }}</h4>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Hit Me</button>
-                    <div class="form-group text-center fs-3 ">
-                        <p>New Here <a class="fw-bolder" href="{{url_for('signup')}}">Signup for free</a></p>
-                    </div>
-                </form>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="formbody">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="username" name="username"
+                                    placeholder="Your Email Please" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="passw"
+                                    placeholder="Your Password please" name="passw" required />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Hit Me</button>
+                        <div class="form-group text-center fs-3 ">
+                            <p>New Here <a class="fw-bolder" href="{{url_for('signup')}}">Signup for free</a></p>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!----Login form End-->
-
+            {% endif %}
         </div>
     </header>
 
@@ -135,10 +140,9 @@
             <form id="contactForm" name="sentMessage" novalidate="novalidate">
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
-
                         <div class="form-group">
-                            <input class="form-control" id="name" type="text" placeholder="Your Name *"
-                                required="required" data-validation-required-message="Please enter your name." />
+                            <input class="form-control" id="name" type="text" placeholder="name" required="required"
+                                data-validation-required-message="Please enter your name." />
                         </div>
                         <div class="form-group">
                             <input class="form-control" id="email" type="email" placeholder="Your Email *"
@@ -193,8 +197,9 @@
         </div>
     </footer>
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+        </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>

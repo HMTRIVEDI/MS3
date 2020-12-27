@@ -76,7 +76,7 @@ def signin():
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
+                    "index", username=session["user"]))
 
             else:
                 flash("Incorrect Username or Password")
@@ -112,7 +112,7 @@ def newplace():
     if request.method == "POST":
 
         existing_place = MONGO.db.place.find_one(
-           {"place_name": request.form.get("place_name")})
+            {"place_name": request.form.get("place_name")})
 
         if existing_place:
             flash("Place already exists")
