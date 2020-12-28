@@ -128,6 +128,20 @@ def newplace():
     return render_template("places.html")
 
 
+@app.route("/contactus", methods=["GET", "POST"])
+def contactus():
+    if request.method == "POST":
+
+        contectus_message = {
+            "name": request.form.get("sender_name"),
+            "email": request.form.get("sender_name"),
+            "phone": request.form.get("sender_phone"),
+            "message": request.form.get("message")}
+        MONGO.db.place.insert_one(contectus_message)
+    flash("thank you for your message")
+    return render_template("index.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

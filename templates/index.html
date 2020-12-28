@@ -67,22 +67,21 @@
         background-image: url('https://wallpaperaccess.com/full/131186.jpg');
       ">
         <div class="container-sm">
-            {% if session.user %}
+
             <div>
                 <div class="masthead-subheading">
-                    <strong>Welcome To Movimento a Explorer's guide</strong>
+                    <strong class="bg-dark p-2 rounded rounded-3 border border-5 border-dark" style="opacity: 2;z-index: 1;">
+                        {% if session.user %}
+                        {{ username }}
+                        Wellcome to Movimento a Explorer's guide
+                        {% else %}
+                        Movimento
+                        {% endif %}</strong>
                 </div>
             </div>
-            {% else %}
+
             <!----Login form start-->
-            <div>
-                <div class="masthead-subheading">
-                    <strong>Movimento</strong>
-                </div>
-            </div>
-            <!----Login form End-->
-            {% endif %}
-            
+
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -157,28 +156,31 @@
                     Let us know what you think.
                 </h3>
             </div>
-            <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <form id="contactForm" name="sentMessage" action="{{url_for('contactus')}}" novalidate="novalidate">
                 <div class="row align-items-stretch mb-5">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <input class="form-control" id="name" type="text" placeholder="name" required="required"
-                                data-validation-required-message="Please enter your name." />
+                                data-validation-required-message="Please enter your name."
+                                name="sender_name" />
                         </div>
                         <div class="form-group">
                             <input class="form-control" id="email" type="email" placeholder="Your Email *"
                                 required="required"
+                                name="sender_email"
                                 data-validation-required-message="Please enter your email address." />
                         </div>
 
                         <div class="form-group mb-md-0">
                             <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
                                 required="required"
+                                name="sender_phone"
                                 data-validation-required-message="Please enter your phone number." />
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group form-group-textarea mb-md-0">
-                            <textarea class="form-control" id="message" placeholder="Your Message *" required="required"
+                            <textarea class="form-control" id="message" placeholder="Your Message *" name="massage" required="required"
                                 data-validation-required-message="Please enter a message."></textarea>
                         </div>
                     </div>
