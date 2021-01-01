@@ -6,7 +6,7 @@
         <div class="card-columns">
             <!----Card Start-->
             {% for place in places %}
-            <div class="card card text-center text-uppercase h-50">
+            <div class="card card text-center text-uppercase h-100 p-2">
                 <img src="{{ place.place_image}}" class="card-img-top img-fluid" alt="{{ place.place_name}}" />
 
                 <div class="card-body">
@@ -84,7 +84,7 @@
                     <div class="form-group">
 
                         <input class="form-control" id="place_location" name="place_location" type="text"
-                            placeholder="Please enter where it's located" required="required"
+                            placeholder="Please enter where it's located"
                             data-validation-required-message="Please enter Which country it's located" required />
 
                     </div>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group">
 
-                        <input class="form-control" id="place_image" name="place_info" type="text"
+                        <input class="form-control" id="place_info" name="place_info" type="text"
                             placeholder="please give some more info which can help othere" required />
 
                     </div>
