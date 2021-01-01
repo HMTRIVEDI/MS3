@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -30,6 +31,29 @@ def places():
     return render_template("places.html", places=places)
 
 
+@app.route("/newplace", methods=["GET", "POST"])
+def newplace():
+    if request.method == "POST":
+
+        existing_place = MONGO.db.place.find_one(
+            {"place_name": request.form.get("place_name")})
+
+        if existing_place:
+            flash("Place already exists")
+            return redirect(url_for("places"))
+
+        new_place = {
+            "place_name": request.form.get("place_name").lower(),
+            "place_location": request.form.get("place_location").lower(),
+            "place_image": request.form.get("place_image"),
+            "user_name": MONGO.db.users.find_one({
+                "username": session["user"]})["name"]
+        }
+        MONGO.db.place.insert_one(new_place)
+
+    return render_template("places.html")
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -54,12 +78,32 @@ def signup():
         }
         MONGO.db.users.insert_one(register)
 
-        session["user"] = request.form.get("username")
+        session["user"] = request.form.get("_id")
 
         flash("We are happy to have you on bord!")
         return redirect(url_for(
             "profile", username=session["user"]))
     return render_template("signup.html")
+
+
+@app.route("/update_user/<username>", methods=["GET", "POST"])
+def update_user(username):
+    if request.method == "POST":
+
+        update = {
+            "street": request.form.get("street"),
+            "houseno": request.form.get("houseno"),
+            "city": request.form.get("city"),
+            "zip": request.form.get("zip"),
+            "country": request.form.get("country"),
+            "phone": request.form.get("phone"),
+            "password": generate_password_hash(request.form.get("passw"))
+        }
+        MONGO.db.users.update({"_id": ObjectId(username)}, update)
+        flash("done")
+
+    profile = MONGO.db.users.find_one({"_id": ObjectId(username)})
+    return render_template("profile.html", profile=profile)
 
 
 @app.route("/signin", methods=["GET", "POST"])
@@ -105,27 +149,6 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("index"))
-
-
-@app.route("/newplace", methods=["GET", "POST"])
-def newplace():
-    if request.method == "POST":
-
-        existing_place = MONGO.db.place.find_one(
-            {"place_name": request.form.get("place_name")})
-
-        if existing_place:
-            flash("Place already exists")
-            return redirect(url_for("places"))
-
-        new_place = {
-            "place_name": request.form.get("place_name").lower(),
-            "place_location": request.form.get("place_location").lower(),
-            "place_image": request.form.get("place_image")
-        }
-        MONGO.db.place.insert_one(new_place)
-
-    return render_template("places.html")
 
 
 @app.route("/contactus", methods=["GET", "POST"])
