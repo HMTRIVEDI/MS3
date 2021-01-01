@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -46,12 +47,16 @@ def newplace():
             "place_name": request.form.get("place_name").lower(),
             "place_location": request.form.get("place_location").lower(),
             "place_image": request.form.get("place_image"),
+            "date": datetime.datetime.now(),
+            "place_info": request.form.get("place_info"),
             "user_name": MONGO.db.users.find_one({
                 "username": session["user"]})["name"]
         }
         MONGO.db.place.insert_one(new_place)
+        flash("Thank You So Much for the contribution")
+        return redirect(url_for("places"))
 
-    return render_template("places.html")
+    return render_template("place.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -159,10 +164,11 @@ def contactus():
             "name": request.form.get("sender_name"),
             "email": request.form.get("sender_name"),
             "phone": request.form.get("sender_phone"),
-            "message": request.form.get("message")}
-        MONGO.db.place.insert_one(contectus_message)
+            "message": request.form.get("message"),
+            "date": datetime.datetime.now.strftime("%y-%m-%d %h:%M:%S")}
+        MONGO.db.messages.insert_one(contectus_message)
     flash("thank you for your message")
-    return render_template("index.html")
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
