@@ -59,7 +59,32 @@ def newplace():
     return render_template("place.html")
 
 
-@app.route("/signup", methods=["GET", "POST"])
+@app.route("/updateplace/<place_id>", methods=["GET", "POST"])
+def updateplace(place_id):
+    if request.method == "POST":
+
+        submit = {
+            "place_name": request.form.get("place_name").lower(),
+            "place_location": request.form.get("place_location").lower(),
+            "place_image": request.form.get("place_image"),
+            "place_info": request.form.get("place_info"),
+        }
+
+        MONGO.db.place.update({"_id": ObjectId(place_id)}, submit)
+        flash("Location Successfully Updated")
+
+    place = MONGO.db.place.find_one({"_id": ObjectId(place_id)})
+    return render_template("updateplace.html", place=place)
+
+
+@app.route("/delete_place/<place_id>")
+def delete_place(place_id):
+    MONGO.db.place.remove({"_id": ObjectId(place_id)})
+    flash("Location Successfully Deleted")
+    return redirect(url_for("places"))
+
+
+@ app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
 
@@ -90,27 +115,7 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route("/update_user/<username>", methods=["GET", "POST"])
-def update_user(username):
-    if request.method == "POST":
-
-        update = {
-            "street": request.form.get("street"),
-            "houseno": request.form.get("houseno"),
-            "city": request.form.get("city"),
-            "zip": request.form.get("zip"),
-            "country": request.form.get("country"),
-            "phone": request.form.get("phone"),
-            "password": generate_password_hash(request.form.get("passw"))
-        }
-        MONGO.db.users.update({"_id": ObjectId(username)}, update)
-        flash("done")
-
-    profile = MONGO.db.users.find_one({"_id": ObjectId(username)})
-    return render_template("profile.html", profile=profile)
-
-
-@app.route("/signin", methods=["GET", "POST"])
+@ app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
         existing_user = MONGO.db.users.find_one(
@@ -135,7 +140,7 @@ def signin():
     return render_template("profile.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
+@ app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
     username = MONGO.db.users.find_one({
@@ -147,7 +152,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-@app.route("/logout")
+@ app.route("/logout")
 def logout():
     # remove user from session cookie
     flash("You have been logged out")
@@ -155,7 +160,7 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/contactus", methods=["GET", "POST"])
+@ app.route("/contactus", methods=["GET", "POST"])
 def contactus():
     if request.method == "POST":
 
@@ -164,7 +169,7 @@ def contactus():
             "email": request.form.get("sender_name"),
             "phone": request.form.get("sender_phone"),
             "message": request.form.get("message"),
-            "date": datetime.datetime.now.strftime("%y-%m-%d %h:%M:%S")}
+            "date": datetime.datetime.now()}
         MONGO.db.messages.insert_one(contectus_message)
     flash("thank you for your message")
     return redirect(url_for("index"))
