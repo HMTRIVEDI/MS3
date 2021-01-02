@@ -26,64 +26,6 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/places")
-def places():
-    places = list(MONGO.db.place.find())
-    return render_template("places.html", places=places)
-
-
-@app.route("/newplace", methods=["GET", "POST"])
-def newplace():
-    if request.method == "POST":
-
-        existing_place = MONGO.db.place.find_one(
-            {"place_name": request.form.get("place_name")})
-
-        if existing_place:
-            flash("Place already exists")
-            return redirect(url_for("places"))
-
-        new_place = {
-            "place_name": request.form.get("place_name").lower(),
-            "place_location": request.form.get("place_location").lower(),
-            "place_image": request.form.get("place_image"),
-            "date": datetime.datetime.now(),
-            "place_info": request.form.get("place_info"),
-            "user_name": MONGO.db.users.find_one({
-                "username": session["user"]})["name"]
-        }
-        MONGO.db.place.insert_one(new_place)
-        flash("Thank You So Much for the contribution")
-        return redirect(url_for("places"))
-
-    return render_template("place.html")
-
-
-@app.route("/updateplace/<place_id>", methods=["GET", "POST"])
-def updateplace(place_id):
-    if request.method == "POST":
-
-        submit = {
-            "place_name": request.form.get("place_name").lower(),
-            "place_location": request.form.get("place_location").lower(),
-            "place_image": request.form.get("place_image"),
-            "place_info": request.form.get("place_info"),
-        }
-
-        MONGO.db.place.update({"_id": ObjectId(place_id)}, submit)
-        flash("Location Successfully Updated")
-
-    place = MONGO.db.place.find_one({"_id": ObjectId(place_id)})
-    return render_template("updateplace.html", place=place)
-
-
-@app.route("/delete_place/<place_id>")
-def delete_place(place_id):
-    MONGO.db.place.remove({"_id": ObjectId(place_id)})
-    flash("Location Successfully Deleted")
-    return redirect(url_for("places"))
-
-
 @ app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -158,6 +100,64 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("index"))
+
+
+@app.route("/places")
+def places():
+    places = list(MONGO.db.place.find())
+    return render_template("places.html", places=places)
+
+
+@app.route("/newplace", methods=["GET", "POST"])
+def newplace():
+    if request.method == "POST":
+
+        existing_place = MONGO.db.place.find_one(
+            {"place_name": request.form.get("place_name")})
+
+        if existing_place:
+            flash("Place already exists")
+            return redirect(url_for("places"))
+
+        new_place = {
+            "place_name": request.form.get("place_name").lower(),
+            "place_location": request.form.get("place_location").lower(),
+            "place_image": request.form.get("place_image"),
+            "date": datetime.datetime.now(),
+            "place_info": request.form.get("place_info"),
+            "user_name": MONGO.db.users.find_one({
+                "username": session["user"]})["name"]
+        }
+        MONGO.db.place.insert_one(new_place)
+        flash("Thank You So Much for the contribution")
+        return redirect(url_for("places"))
+
+    return render_template("place.html")
+
+
+@app.route("/updateplace/<place_id>", methods=["GET", "POST"])
+def updateplace(place_id):
+    if request.method == "POST":
+
+        submit = {
+            "place_name": request.form.get("place_name").lower(),
+            "place_location": request.form.get("place_location").lower(),
+            "place_image": request.form.get("place_image"),
+            "place_info": request.form.get("place_info"),
+        }
+
+        MONGO.db.place.update({"_id": ObjectId(place_id)}, submit)
+        flash("Location Successfully Updated")
+
+    place = MONGO.db.place.find_one({"_id": ObjectId(place_id)})
+    return render_template("updateplace.html", place=place)
+
+
+@app.route("/delete_place/<place_id>")
+def delete_place(place_id):
+    MONGO.db.place.remove({"_id": ObjectId(place_id)})
+    flash("Location Successfully Deleted")
+    return redirect(url_for("places"))
 
 
 @ app.route("/contactus", methods=["GET", "POST"])
