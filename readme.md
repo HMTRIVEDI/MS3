@@ -26,11 +26,7 @@
 - User want to delete the information.
 - Guest user want to contact us.
 
-
-
-### Features
-
-#### Current Features
+### Current Features
 
 - user can signup on website.
 - user can login on website.
@@ -39,11 +35,13 @@
 - user can delete and update the location details.
 - usre can see more details about the location info.
 
-#### Features yet to devlop
+### Features yet to devlop
 
 - User can edit user profile.
 - Event page where user can see diffrent local event happning around.
 - User can add events and loaction to visit in basket.
+
+---
 
 ---
 
