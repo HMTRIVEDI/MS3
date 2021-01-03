@@ -37,15 +37,15 @@
                     </div>
                     <div class="form-group">
 
-                        <textarea class="form-control" id="place_info" name="place_info" value="{{ place.place_info }}"
-                            required>
+                        <textarea class="form-control" id="place_info" name="place_info"
+                            placeholder="{{ place.place_info }}" required>
                         </textarea>
 
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <a class="btn btn-danger btn-xl text-uppercase" type="submit" href="{{ url_for('places') }}">
+                <a class="btn btn-danger btn-xl text-uppercase" href="{{ url_for('places') }}">
                     cancel
                 </a>
                 <button class="btn btn-primary btn-xl text-uppercase" type="submit">
