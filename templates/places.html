@@ -4,7 +4,7 @@
 <section class="pt-5" style="background-image: url('https://wallpaperaccess.com/full/131186.jpg');">
     <div class="container mt-5">
         <div class="card-columns ">
-            <!----Card Start-->
+            <!--Card Start-->
             {% for place in places %}
             <div class="card card text-center text-uppercase h-100 mt-5 p-2">
                 <img src="{{ place.place_image}}" class="card-img-top img-fluid" alt="{{ place.place_name}}" />
@@ -24,16 +24,16 @@
                     <a class="btn btn-danger" href="{{ url_for('delete_place', place_id=place._id) }}">
                         Delete
                     </a>
-                    <a type=" button" class="btn btn-primary" href="{{ url_for('updateplace', place_id=place._id) }}">
+                    <a class="btn btn-primary" href="{{ url_for('updateplace', place_id=place._id) }}">
                         <i class="far fa-edit"></i>
                     </a>
                     <!-- Modal -->
                     <div class="modal fade " id="staticBackdrop{{- place._id -}}" data-bs-backdrop="static"
-                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel{{- place._id -}}" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-uppercase" id="staticBackdropLabel">
+                                    <h5 class="modal-title text-uppercase" id="staticBackdropLabel{{- place._id -}}">
                                         {{ place.place_name }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"><i class="fas fa-times"></i></button>
@@ -45,7 +45,7 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <p class="card-text text-uppercase" href="">First Explorer in Movimento Community:
+                                    <p class="card-text text-uppercase">First Explorer in Movimento Community:
                                         <strong>{{ place.user_name }}</strong>
                                     </p>
 
