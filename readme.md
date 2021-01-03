@@ -91,8 +91,16 @@
 ## Testing
 
 ---
+### Automated testing
+---
+- HTML pages has been tested using w3c validator
+  - found 10 error in html templates has been solved by taking all corrective mesuures errors and solved status can me found in test.md file
+- Pythone code has been tested using https://extendsclass.com/python-tester.html
+  - No error found result can be seen in test.md file
+---
 
 ## Deployment
+
 ---
 ### Project Creation
 ---
