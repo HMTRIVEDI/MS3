@@ -125,7 +125,7 @@ No error found result can be seen in **test.md** file
   - website has been tested on many hardware laptop, phone, desktop and looks perfactly fine on all screen size
   - test result can be seen on **test.md**
 ---
-### User Feture Testing 
+### website features Testing 
 ---
 
 1. User story first impration of website:
@@ -150,7 +150,7 @@ No error found result can be seen in **test.md** file
 7. user want to edit the location page: if user want to edit infomation he given it can be done by clicking on edit button.
  - on click updateplace page popup and by filling the page and clicking on submit button user can update all details and if click cancel it will redirect it to the place page without changing anything.
 
-8. user want to delete the location: if location updated bu user he only can delete it by clicking on delete button.
+8. user want to delete the location: if location updated by user he only can delete it by clicking on delete button.
 
 
 ## Deployment
@@ -191,26 +191,26 @@ No error found result can be seen in **test.md** file
  Once the repo has been found, click the connect button.
  Set environment variables:
 
-7. Click the settings tab and then click the Reveal Confid Vars button and add the following:
+7. Click the settings tab and then click the Reveal Confid Vars button and add  the following:
 
- key: IP, value: 0.0.0.0
- key: PORT, value: 5000
- key: MONGO_DBNAME, value: (database name you want to connect to)
- key: MONGO_URI, value: (mongo uri - This can be found in MongoDB by going to clusters > connect > connect to your application and substituting the password and dbname that you set up in the link).
- key: SECRET_KEY, value: (This is a custom secret key set up for configuration to keep client-side sessions secure).
+ - key: IP, value: 0.0.0.0
+ - key: PORT, value: 5000
+ - key: MONGO_DBNAME, value: (database name you want to connect to)
+ - key: MONGO_URI, value: (mongo uri - This can be found in MongoDB by going to 
+ - key: SECRET_KEY, value: (This is a custom secret key set up for configuration to keep client-side sessions secure).
  Enable automatic deployment:
 
 8. Click the Deploy tab
- In the Automatic deploys section, choose the branch you want to deploy from then click Enable Automation Deploys.
+ - In the Automatic deploys section, choose the branch you want to deploy from  then click Enable Automation Deploys.
 
 ---
 
 ## Credits
-
+- All data used on project are used only for educational purposes and collected from multiple resources will be given cretits as and when gethered more information 
 ### Content
-All content for the location info has been collected from Wikipedia and diffrent location info website. furthere whenver new location will be added Movimento does not claim any right on those information
+All content for the location info has been collected from Wikipedia and diffrent location info website. in future whenever new location will be added Movimento does not claim any right or responsiblity on those information
 ### Media
-All Media for the website has been collected from diffrent websites and used as URL to display those info, and furthere whenver new location will be added Movimento does not claim any right on those media.
+All Media for the website has been collected from diffrent websites and used as URL to display those info, and furthere whenver new location will be added Movimento does not claim any right or responsiblity on those media.
 
 ### Acknowledgements
 - Rahul Patil
