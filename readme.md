@@ -94,10 +94,64 @@
 ### Automated testing
 ---
 - HTML pages has been tested using w3c validator
-  - found 10 error in html templates has been solved by taking all corrective mesuures errors and solved status can me found in test.md file
+  - found 10 error in html templates has been solved by taking all corrective   mesuures errors and solved status can me found in **test.md** file
 - Pythone code has been tested using https://extendsclass.com/python-tester.html
-  - No error found result can be seen in test.md file
+No error found result can be seen in **test.md** file
+
 ---
+### Manual Testing
+---
+---
+#### CRUD testing
+---
+- Data Input:
+  tested that whenever user input data in amy form ( user signup,give Location information, update location information) does it get response from the mongodb 
+
+  Status: Active
+
+- Data display:
+  tested that whenever user select a option to see perticular data does it get responce from mongodb 
+    - Profile : on click on profile user must be able to see the profile infomation provided at time of signup.
+    - Place: on click user must be able to see the location and information about it if data is there.
+
+    status: Active
+
+- Data delete: tested whene user want to delete a data which input by him 
+   
+   status: Active
+---
+#### Responsivness
+---
+  - website has been tested on many hardware laptop, phone, desktop and looks perfactly fine on all screen size
+  - test result can be seen on **test.md**
+---
+### User Feture Testing 
+---
+
+1. User story first impration of website:
+  on accesing the website user must be able to see the following links home,free signup, Login email form for sending the infomration to the website owner. and on the image name of the website " Movimento" below it the info about the website.
+
+2. User story Signup: 
+  - website have exclusive information so user need to signup.
+  - on click on signup user must me able to see signup page and after feeling the form page must me redirect to home page.
+
+3. User Story Signup form: 
+  - filds with * are mandatory so if user escape those , form can not be accepted.
+
+4. User Login: 
+  - on click on login button model will popup and ask user to provide username and pasword and if password username are correct it will redirect user to home page and there will be massage says " welcome to movimento a travelat's guide ", if password or username is incorrect it will redirect respactive page.
+
+  - After login user can see hidden navigation links " place, profile"
+
+5. User want more info about location: on click on info button user can find more info about the given location
+
+6. User want to give information regarding new location: user can fillup the form given at bottom of the place page and then submit it will redirect to place page and user can see the location has been updated in database.
+
+7. user want to edit the location page: if user want to edit infomation he given it can be done by clicking on edit button.
+ - on click updateplace page popup and by filling the page and clicking on submit button user can update all details and if click cancel it will redirect it to the place page without changing anything.
+
+8. user want to delete the location: if location updated bu user he only can delete it by clicking on delete button.
+
 
 ## Deployment
 
@@ -154,9 +208,13 @@
 ## Credits
 
 ### Content
-
+All content for the location info has been collected from Wikipedia and diffrent location info website. furthere whenver new location will be added Movimento does not claim any right on those information
 ### Media
+All Media for the website has been collected from diffrent websites and used as URL to display those info, and furthere whenver new location will be added Movimento does not claim any right on those media.
 
 ### Acknowledgements
-
----
+- Rahul Patil
+- https://www.w3schools.com/
+- Slack Community
+- tutor support
+- https://startbootstrap.com/(for website base templete)
