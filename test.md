@@ -14,7 +14,7 @@
 ### python code test
 
 - Signup page
- ![GitHub Logo](/assets/test/Python-Code-test.png)
+ ![GitHub Logo](/assets/test/python-test.png)
 
  ## Manual testing 
 
