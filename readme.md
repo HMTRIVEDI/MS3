@@ -47,7 +47,14 @@
 ---
 
 ## wireframes
-
+  - in devlopment stage few things and design has been changed and some features has been removed due to time limit and will be devloped in next version
+   
+![GitHub Logo](/assets/wirefram/MS3-page-001.jpg)
+![GitHub Logo](/assets/wirefram/MS3-page-002.jpg)
+![GitHub Logo](/assets/wirefram/MS3-page-003.jpg)
+![GitHub Logo](/assets/wirefram/MS3-page-004.jpg)
+![GitHub Logo](/assets/wirefram/MS3-page-005.jpg)
+![GitHub Logo](/assets/wirefram/MS3-page-006.jpg)
 
 ## Technologies Used
 
