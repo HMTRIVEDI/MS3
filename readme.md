@@ -94,15 +94,13 @@
   - Website Mockup Generator was used to create the Mock up image in this README
 
 ---
-
 ## Testing
-
 ---
 ### Automated testing
 ---
 - HTML pages has been tested using w3c validator
   - found 10 error in html templates has been solved by taking all corrective   mesuures errors and solved status can me found in **test.md** file
-- Pythone code has been tested using https://extendsclass.com/python-tester.html
+- Pythone code has been tested using pip8online
 No error found result can be seen in **test.md** file
 
 ---
@@ -166,7 +164,7 @@ No error found result can be seen in **test.md** file
 ### Project Creation
 ---
  
- To create this project I used the CI Gitpod Full Template by navigating here and clicking the 'Use this template' button.
+ To create this project I used the Code institute Gitpod Full Template by navigating here and clicking the 'Use this template' button.
 
  I was then directed to the create new repository from template page and entered in my desired repo name, then clicked Create repository from template button.
 
