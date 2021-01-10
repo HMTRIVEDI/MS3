@@ -125,8 +125,7 @@ def newplace():
             "place_image": request.form.get("place_image"),
             "date": datetime.datetime.now(),
             "place_info": request.form.get("place_info"),
-            "user_name": MONGO.db.users.find_one({
-                "username": session["user"]})["name"]
+            "user_name": session["user"]
         }
         MONGO.db.place.insert_one(new_place)
         flash("Thank You So Much for the contribution")

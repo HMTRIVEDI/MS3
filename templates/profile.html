@@ -21,9 +21,6 @@
                         <!------- profile display and edit form -->
                         <form method="POST">
                             <div class="row align-items-center p-2">
-                                <div class="col-12 text-center">
-                                    <a href="#" type="submit" class="btn btn-sm btn-primary">Update</a>
-                                </div>
                             </div>
                             <h6 class="heading-small text-muted mb-4">User information</h6>
                             <div class="pl-lg-4">
@@ -37,12 +34,10 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label"
-                                                for="input-username">password</label>
+                                        <div class="form-group focused" h>
                                             <input type="password" class="form-control" id="inputPassword" name="passw"
                                                 placeholder="{{ username.passw }}" minlength="5" maxlength="15"
-                                                pattern="^[a-zA-Z0-9]{5,15}$" required />
+                                                pattern="^[a-zA-Z0-9]{5,15}$" required hidden />
                                         </div>
                                     </div>
                                 </div>
@@ -88,8 +83,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-country">Country</label>
-                                            <input type="text" id="input-country"
-                                                class="form-controlform-control-alternative"
+                                            <input type="text" id="input-country" class="form-control"
                                                 placeholder="{{ username.country }}" name="country"
                                                 value="{{ username.country }}">
                                         </div>
