@@ -164,7 +164,7 @@ No error found result can be seen in **test.md** file
 ### Project Creation
 ---
  
- To create this project I used the Code institute Gitpod Full Template by navigating here and clicking the 'Use this template' button.
+ To create this project I used the CI Gitpod Full Template by navigating here and clicking the 'Use this template' button.
 
  I was then directed to the create new repository from template page and entered in my desired repo name, then clicked Create repository from template button.
 
@@ -213,7 +213,7 @@ No error found result can be seen in **test.md** file
 ## Credits
 - All data used on project are used only for educational purposes and collected from multiple resources will be given cretits as and when gethered more information 
 ### Content
-All content for the location info has been collected from Wikipedia and diffrent location info website. in future whenever new location will be added Movimento does not claim any right or responsiblity on those information
+All content for the location info has been collected from Wikipedia and diffrent location info website. for future whenever new location will be added Movimento does not claim any right or responsiblity on those information 
 ### Media
 All Media for the website has been collected from diffrent websites and used as URL to display those info, and furthere whenver new location will be added Movimento does not claim any right or responsiblity on those media.
 
